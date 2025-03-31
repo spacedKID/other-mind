@@ -104,6 +104,26 @@ module.exports = {
         ]
       },
       {
+        test: /.pug$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'about.html',
+              publicPath: '/'
+            }
+          },
+          'extract-loader',
+          {
+            loader: "html-loader",
+            options: {
+              attrs: ["img:src", "link:href"]
+            }
+          },
+          'pug-html-loader'
+        ]
+      },
+      {
         test: /\.(svg|jpg|woff(2)?|ttf|eot)/,
         use: [{
           loader: 'file-loader',
